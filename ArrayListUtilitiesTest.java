@@ -34,15 +34,14 @@ public class ArrayListUtilitiesTest {
 
     @Test
     public void testRemoveLongWords() {
-        ArrayList<String> input;
-        ArrayList<String> expectedOutput;
-        ArrayList<String> actualOutput;
+        ArrayList<String> original;
+        ArrayList<String> expectedFinal;
 
         // some positive numbers
-        input = new ArrayList<>(Arrays.asList("Charles", "Apple", "cat","some","LongWord"));
-        expectedOutput = new ArrayList<>(Arrays.asList("Apple", "cat", "some"));
-        actualOutput = ArrayListUtilities.withoutLongWords(input);
-        assertEquals(expectedOutput, actualOutput);
+        original = new ArrayList<>(Arrays.asList("Charles", "Apple", "cat","some","LongWord"));
+        expectedFinal = new ArrayList<>(Arrays.asList("Apple", "cat", "some"));
+        ArrayListUtilities.removeLongWords(original);
+        assertEquals(expectedFinal, original);
     }
 
     @Test
@@ -56,6 +55,18 @@ public class ArrayListUtilitiesTest {
         expectedOutput = new ArrayList<>(Arrays.asList(8.3,9.3,1.1,2.4,5.7));
         actualOutput = ArrayListUtilities.reversed(input);
         assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testReversedInPlace() {
+        ArrayList<Double> original;
+        ArrayList<Double> expectedFinal;
+
+        // some positive numbers
+        original = new ArrayList<>(Arrays.asList(5.7,2.4,1.1,9.3,8.3));
+        expectedFinal = new ArrayList<>(Arrays.asList(8.3,9.3,1.1,2.4,5.7));
+        ArrayListUtilities.reverseInPlace(original);
+        assertEquals(expectedFinal, original);
     }
 
 }

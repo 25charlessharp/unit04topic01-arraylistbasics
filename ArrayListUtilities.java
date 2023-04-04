@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ArrayListUtilities {
     public static int getListMax(ArrayList<Integer> items) {
@@ -22,8 +23,8 @@ public class ArrayListUtilities {
     }
 
     public static void removeLongWords(ArrayList<String> longWords){
-        for(int i = 0; i < longWords.size()-1; i ++){
-            if(longWords.get(i).length() <= 5){
+        for(int i = 0; i < longWords.size(); i ++){
+            if(longWords.get(i).length() > 5){
                 longWords.remove(i);
             }
         }
@@ -38,10 +39,18 @@ public class ArrayListUtilities {
     }
 
     public static void reverseInPlace (ArrayList<Double> normal){
+        final ArrayList<Double> copy =  new ArrayList<Double>(normal);
         int num = 0;
         for(int i = normal.size() - 1; i >= 0; i --){
-            normal.set(num,normal.get(i));
+            normal.set(num, copy.get(i));
             num ++;
         }
     }
+
+
+    public static void main(String[] args) {
+        ArrayList<Double> original = new ArrayList<>(Arrays.asList(5.7,2.4,1.1,9.3,8.3));
+    
+        ArrayListUtilities.reverseInPlace(original);
+}
 }
